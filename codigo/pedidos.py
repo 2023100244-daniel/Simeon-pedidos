@@ -1,14 +1,27 @@
-# Función para calcular el subtotal corrigiendo la incidencia INC-014
+# Función para calcular el subtotal (RN-01)
 def calcular_subtotal(precio, cantidad):
-    # Se corrige el error: ahora se multiplica el precio por la cantidad según la regla RN-01
     return precio * cantidad
 
-# Variables de prueba solicitadas
-precio = 80
+# Función para calcular el costo de envío según RN-02 y RN-03
+def calcular_envio(subtotal):
+    # RN-02: Si el subtotal es igual o superior a S/ 300, el envío es gratuito
+    if subtotal >= 300:
+        return 0
+    # RN-03: Si el subtotal es inferior a S/ 300, el envío cuesta S/ 20
+    else:
+        return 20
+
+# Casos de prueba
+precio = 150
 cantidad = 3
 
-# Llamada a la función para calcular el subtotal
+# Cálculos
 subtotal = calcular_subtotal(precio, cantidad)
+envio = calcular_envio(subtotal)
+# RN-04: El total del pedido es el subtotal más el costo de envío
+total = subtotal + envio
 
-# Mostrar el resultado en pantalla (para S/ 80 y 3 unidades debe mostrar S/ 240)
+# Mostrar resultados
 print("Subtotal: S/", subtotal)
+print("Costo de envío: S/", envio)
+print("Total del pedido: S/", total)
